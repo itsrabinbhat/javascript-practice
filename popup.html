@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Popup</title>
+    <style>
+      body {
+        background-color: #555;
+        color: #fff;
+        font-family: "Poppins", Courier, monospace;
+        overflow: hidden;
+      }
+      .container {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .btn {
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .submit-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: none;
+        z-index: 100;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .active {
+        display: block;
+      }
+
+      .popup-container {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .popup {
+        width: 350px;
+        text-align: center;
+        position: relative;
+        background-color: #f8f8f8;
+        color: #333;
+        border-radius: 5px;
+        padding: 1px 1rem 1rem;
+        transform: scale(0);
+        transition: transform 0.2s ease-in;
+        visibility: hidden;
+      }
+      .popup.active {
+        visibility: visible;
+        transform: scale(1);
+      }
+
+      .tick-icon {
+        background-color: #6fd648;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+      }
+
+      .text {
+        margin-top: 70px;
+      }
+
+      .ok-btn {
+        background-color: #6fd648;
+        color: #fff;
+        font-size: 1rem;
+        width: 100%;
+        padding: 10px 0;
+        border: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button class="btn submit-btn" onclick="showMsg()">Submit</button>
+    </div>
+
+    <div class="popup-container">
+      <div class="popup">
+        <div class="tick-icon"><i class="fas fa-check"></i></div>
+        <div class="text">
+          <h2>Thank You!</h2>
+          <p>Your details has been successfully submitted. Thanks!</p>
+          <button class="btn ok-btn" onclick="hideMsg()">OK</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const container = document.querySelector(".container");
+    const popup = document.querySelector(".popup");
+    function showMsg() {
+      container.classList.add("hidden");
+      popup.classList.add("active");
+    }
+    function hideMsg() {
+      container.classList.remove("hidden");
+      popup.classList.remove("active");
+    }
+  </script>
+</html>
